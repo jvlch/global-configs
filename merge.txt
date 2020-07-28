@@ -1,5 +1,6 @@
-<<<<<<< HEAD
-exampletext
-=======
-example12345text
->>>>>>> dev
+line1MASTER
+
+line3MASTER
+line4MASTER
+
+line6MASTER
