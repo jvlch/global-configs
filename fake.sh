@@ -4,10 +4,12 @@ inputOne=$1
 
 function hello {
   echo $inputOne
-  echo "isbased"
+  echo "isnotbased"
+  echo "whydoesthisnotwork"
 }
 
 function nohello {
+  echo "check1"
   echo "please stop"
 }
 
