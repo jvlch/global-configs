@@ -1,3 +1,3 @@
 # global-configs
 
-A personal repo for tmux, alacritty, bash, and vim/nvim configuration files
+A personal repo for tmux, alacritty, bash, or/and vim/nvim configuration files

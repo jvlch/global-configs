@@ -22,6 +22,7 @@ set smarttab
 set laststatus=2
 set noshowmode
 set relativenumber
+set clipboard+=unnamedplus
 
 map <C-p> :NERDTreeToggle<CR>
 
@@ -31,14 +32,16 @@ let g:indent_guides_auto_colors = 0
 let g:loaded_python_provider = 0
 let g:loaded_ruby_provider = 0
 let g:loaded_perl_provider = 0
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=grey58   ctermbg=253
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey66 ctermbg=230
 autocmd FileType typescript setlocal completeopt+=menu,preview
 
+nnoremap <SPACE> <Nop>
 let g:indent_guides_enable_on_vim_startup = 1 
-let mapleader=","
+let mapleader = "\<Space>" 
 let g:typescript_compiler_binary = 'tsc'
 set timeout timeoutlen=1500
 let g:lightline = { 'active': {'left': [ [ 'mode', 'paste' ], ['gitbranch','readonly','filename','modified' ]]}, 'component_function': {'gitbranch':'gitbranch#name'},}
@@ -72,18 +75,38 @@ set hidden
 " This replaces :tabnew which I used to bind to this mapping
 nmap <leader>t :enew<cr>
 
+"delete current buffer
+nmap <leader>w :bd<CR>
+
 " Move to the next buffer
 nmap <leader>l :bnext<CR>
 
 " Move to the previous buffer
 nmap <leader>h :bprevious<CR>
 
+"Open GFiles"
+nmap <leader>p :GFiles<CR>
+
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
 nmap <leader>bq :bp <BAR> bd #<CR>
 
+"show all buffers"
+nmap <leader>ba :Buffers<CR>
+
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
+
+"Go to definition
+
+"open git status"
+nmap <leader>gs :G<CR>
+
+"accept merge from left side"
+nmap <leader>gh :diffget //2<CR>
+
+"accept merge from right side"
+nmap <leader>gl :diffget //3<CR>
 
 syntax enable
 
@@ -104,7 +127,7 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/denite.nvim'
 Plug 'bling/vim-bufferline'
 Plug 'michaeljsmith/vim-indent-object'
-
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
