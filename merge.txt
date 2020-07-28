@@ -1,16 +1,6 @@
-<<<<<<< HEAD
+LINE1MASTER
 
-line2DEV
+LINE3MASTER
 
-line4DEV
-line5DEV
-
-line7DEV
-=======
-line1MASTER
-
-line3MASTER
-line4MASTER
-
-line6MASTER
->>>>>>> master
+LINE5MASTER
+LINE6MASTER
