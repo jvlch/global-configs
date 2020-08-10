@@ -23,11 +23,12 @@ set laststatus=2
 set noshowmode
 set relativenumber
 set clipboard+=unnamedplus
+set cmdheight=2
 
 map <C-p> :NERDTreeToggle<CR>
 
 let NERDTreeShowHidden=1
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
 let g:indent_guides_auto_colors = 0
 let g:loaded_python_provider = 0
 let g:loaded_ruby_provider = 0
@@ -35,9 +36,10 @@ let g:loaded_perl_provider = 0
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=grey58   ctermbg=253
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey66 ctermbg=230
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=grey58   ctermbg=240
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey66 ctermbg=235
 autocmd FileType typescript setlocal completeopt+=menu,preview
+autocmd BufEnter * EnableBlameLine
 
 nnoremap <SPACE> <Nop>
 let g:indent_guides_enable_on_vim_startup = 1 
@@ -67,6 +69,9 @@ nnoremap <C-u> :tabnew<CR>
 nnoremap <C-i> :tabprevious<CR>
 nnoremap <C-o> :tabnext<CR>
 
+" Enable blame line
+nnoremap <silent> <leader>z :ToggleBlameLine<CR>
+
 " This allows buffers to be hidden if you've modified a buffer.
 " This is almost a must if you wish to use buffers in this way.
 set hidden
@@ -85,7 +90,7 @@ nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
 
 "Open GFiles"
-nmap <leader>p :GFiles<CR>
+nmap <leader>p :Files<CR>
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
@@ -113,6 +118,7 @@ syntax enable
 call plug#begin('~/.vim/plugged')
 
 Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
@@ -128,8 +134,10 @@ Plug 'Shougo/denite.nvim'
 Plug 'bling/vim-bufferline'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'tpope/vim-fugitive'
+Plug 'tveskag/nvim-blame-line'
 
 call plug#end()
 
-set background=light
-colorscheme solarized
+colorscheme gruvbox
+set background=dark
+"colorscheme solarized
