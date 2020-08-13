@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
+"LINE 2 FROM MASTER"
 
-<<<<<<< HEAD
-echo "holladev"
-echo "holladev"
-echo "holladev"
-=======
-echo "hollamaster"
-echo "hollamaster"
-echo "hollamaster"
->>>>>>> master
+"LINE 4 FROM MASTER"
+"LINE 5 FROM MASTER"
