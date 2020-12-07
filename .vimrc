@@ -35,12 +35,13 @@ set shortmess+=c
 " This is almost a must if you wish to use buffers in this way.
 set hidden
 let NERDTreeShowHidden=1
-let g:NERDTreeIgnore = ['\.d\.ts$[[file]]','\.js.map$[[file]]']
+let g:NERDTreeIgnore = ['\.d\.ts$[[file]]','\.js.map$[[file]]','node_modules','\.rush']
 let g:indent_guides_auto_colors = 0
 let g:loaded_python_provider = 0
 let g:loaded_ruby_provider = 0
 let g:loaded_perl_provider = 0
 let g:python3_host_prog = '/usr/local/bin/python3'
+let g:gitgutter_max_signs=9999
 
 
 let g:indent_guides_enable_on_vim_startup = 1 
@@ -71,7 +72,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tveskag/nvim-blame-line'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/jsonc.vim'
 Plug 'stsewd/fzf-checkout.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 
 colorscheme gruvbox
@@ -97,6 +100,7 @@ map <C-p> :NERDTreeToggle<CR>
 
 " Enable blame line
 nnoremap <silent> <leader>z :ToggleBlameLine<CR>
+nnoremap <c-z> :u<CR>  
 
 
 " To open a new empty buffer
@@ -135,9 +139,13 @@ nmap <leader>gs :G<CR>
 nmap <leader>gh :diffget //2<CR>
 ""accept merge from right side"
 nmap <leader>gl :diffget //3<CR>
+nmap <leader>md <Plug>MarkdownPreviewToggle
 
-""Open GFiles"
-nmap <leader>p :Files<CR>
+""FZF search all Files"
+nmap <leader>o :Files<CR>
+
+""FZF search GitFiles"
+nmap <leader>p :GFiles<CR>
 
 ""coc rename
 nmap <leader>rr <Plug>(coc-rename)
@@ -161,3 +169,7 @@ fun! TrimWhitespace()
 endfun
 
 com! W w
+
+augroup JsonToJsonc
+    autocmd! FileType json set filetype=jsonc
+augroup END
