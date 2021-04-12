@@ -31,6 +31,7 @@ visual_bell:
 background_opacity: 1.0
 
 font:
+  size: 17
   # The normal (roman) font face to use.
   normal:
     family: SF Mono
@@ -45,7 +46,6 @@ font:
   italic:
     family: SF Mono
     style: Regular Italic
-  size: 17.5
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -189,5 +189,6 @@ key_bindings:
   - { key: U,        mods: Command, chars: "\x15" } # new tab
   - { key: I,        mods: Command, chars: "\x09" } # tab previous
   - { key: O,        mods: Command, chars: "\x0f" } # tab next
+  - { key: Yen,                       chars: "\x5c" } # tab next
 dynamic_title: true
 live_config_reload: true

@@ -40,6 +40,28 @@ alias wp='cd ~/Workspace && ll'
 alias vim='nvim'
 alias glog='git log --graph --decorate --pretty=oneline --abbrev-commit'
 alias cdd='thediriwanttogoto=$(ls -d ~/Workspace/* | fzf) && cd $thediriwanttogoto'
+alias gspr='git fetch && git stash && git pull --rebase && git stash pop'
+alias gpr='git fetch && git pull --rebase'
+alias gbr='git branch | fzf -d 15'
+gch() {
+ git checkout "$(git branch | fzf | tr -d '[:space:]')"
+}
+
+alias glNoGraph='git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr% C(auto)%an" "$@"'
+_gitLogLineToHash="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
+_viewGitLogLine="$_gitLogLineToHash | xargs -I % sh -c 'git show --color=always % | diff-so-fancy'"
+_viewGitLogLineUnfancy="$_gitLogLineToHash | xargs -I % sh -c 'git show %'"
+
+# gls - git commit browser with previews and vim integration 
+gls() {
+    glNoGraph |
+        fzf --no-sort --reverse --tiebreak=index --no-multi \
+            --ansi --preview="$_viewGitLogLine" \
+                --header "enter to view, ctrl-y to copy hash, ctrl-o to open in vim" \
+                --bind "enter:execute:$_viewGitLogLine   | less -R" \
+                --bind "CTRL-o:execute:$_viewGitLogLineUnfancy | vim -" \
+                --bind "CTRL-y:execute:$_gitLogLineToHash | pbcopy"
+}
 
 ORG="https://paymerang.visualstudio.com"
 [ -f ~/alacritty/extra/completions/alacritty.bash ] && source ~/alacritty/extra/completions/alacritty.bash
