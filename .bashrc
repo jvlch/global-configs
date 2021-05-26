@@ -43,6 +43,7 @@ alias cdd='thediriwanttogoto=$(ls -d ~/Workspace/* | fzf) && cd $thediriwanttogo
 alias gspr='git fetch && git stash && git pull --rebase && git stash pop'
 alias gpr='git fetch && git pull --rebase'
 alias gbr='git branch | fzf -d 15'
+alias f='rg --hidden -l "" | fzf'
 gch() {
  git checkout "$(git branch | fzf | tr -d '[:space:]')"
 }
@@ -70,3 +71,13 @@ ORG="https://paymerang.visualstudio.com"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /Users/johncho/Workspace/pmg.b2b.sdk.authorizer/node_modules/tabtab/.completions/serverless.bash ] && . /Users/johncho/Workspace/pmg.b2b.sdk.authorizer/node_modules/tabtab/.completions/serverless.bash
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /Users/johncho/Workspace/pmg.b2b.sdk.authorizer/node_modules/tabtab/.completions/sls.bash ] && . /Users/johncho/Workspace/pmg.b2b.sdk.authorizer/node_modules/tabtab/.completions/sls.bash
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[ -f /Users/johncho/Workspace/pmg.b2b.sdk.authorizer/node_modules/tabtab/.completions/slss.bash ] && . /Users/johncho/Workspace/pmg.b2b.sdk.authorizer/node_modules/tabtab/.completions/slss.bash
