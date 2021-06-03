@@ -18,7 +18,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'reedes/vim-wheel'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'bling/vim-bufferline'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'tpope/vim-fugitive'
 Plug 'tveskag/nvim-blame-line'
@@ -32,7 +31,11 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'szw/vim-maximizer'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'easymotion/vim-easymotion'
+Plug 'joegesualdo/jsdoc.vim'
+Plug 'ap/vim-buftabline'
 call plug#end()
+
+let g:miniBufExplBRSplit = 1
 
 """"
 """"
@@ -63,6 +66,8 @@ set t_Co=256
 set timeout timeoutlen=500
 set title
 set ts=2 sw=2
+set sts=2
+set et
 set undolevels=1000
 set updatetime=50
 set visualbell
@@ -115,6 +120,15 @@ let g:lightline = { 'active': {'left': [ [ 'mode', 'paste' ], ['gitbranch','read
 
 """"
 """"
+"buftabline
+""""
+""""
+noremap <LEADER><left>   :bprevious<CR>
+noremap <LEADER><right>   :bnext<CR>
+
+
+""""
+""""
 "indent line
 """"
 """"
@@ -159,6 +173,10 @@ nnoremap <c-z> :u<CR>
 "general navigation
 """"
 """"
+nnoremap <leader>dd "_dd
+nnoremap <leader>daw "_daw
+vnoremap <leader>dd "_dd
+vnoremap <leader>daw "_daw
 
 " To open a new empty buffer
 " This replaces :tabnew which I used to bind to this mapping
@@ -261,6 +279,9 @@ nmap <leader>o :Files<CR>
 ""FZF search GitFiles"
 nmap <leader>p :GFiles<CR>
 
+""FZF search buffers
+nmap <leader>b :Buffers<CR>
+
 
 """"
 """"
@@ -327,6 +348,13 @@ else
   set signcolumn=yes
 endif
 
+
+""""
+""""
+"jsdoc
+""""
+""""
+nnoremap jsd :<C-u>call JSDocAdd()<CR>
 " vimspector layout
 " scriptencoding utf-8
 " set noequalalways
