@@ -35,8 +35,6 @@ Plug 'joegesualdo/jsdoc.vim'
 Plug 'ap/vim-buftabline'
 call plug#end()
 
-let g:miniBufExplBRSplit = 1
-
 """"
 """"
 "GENERAL SETS
@@ -123,6 +121,8 @@ let g:lightline = { 'active': {'left': [ [ 'mode', 'paste' ], ['gitbranch','read
 "buftabline
 """"
 """"
+let g:buftabline_show = 1
+let g:buftabline_indicators= 1
 noremap <LEADER><left>   :bprevious<CR>
 noremap <LEADER><right>   :bnext<CR>
 
